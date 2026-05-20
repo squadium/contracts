@@ -22,7 +22,7 @@ import {MockMETH} from "../src/mocks/MockMETH.sol";
 ///                                       consumers (optional, default 2 days)
 contract Deploy is Script {
     function run() external {
-        uint256 deployerPk = vm.envUint("DEPLOYER_PRIVATE_KEY");
+        uint256 deployerPk = _readDeployerPk();
         address deployer = vm.addr(deployerPk);
 
         address oracleSigner = vm.envOr("ORACLE_SIGNER_ADDRESS", deployer);
@@ -80,5 +80,14 @@ contract Deploy is Script {
         console.log("LiquidReputation      :", address(liquidRep));
         console.log("RewardDistributor     :", address(rewards));
         console.log("ReputationGatedPool   :", address(gatedPool));
+    }
+
+    /// @dev Accept DEPLOYER_PRIVATE_KEY with or without the `0x` prefix.
+    ///      Foundry's `vm.envUint` requires the prefix; this normalizes.
+    function _readDeployerPk() internal view returns (uint256) {
+        string memory raw = vm.envString("DEPLOYER_PRIVATE_KEY");
+        bytes memory rb = bytes(raw);
+        bool hasPrefix = rb.length >= 2 && rb[0] == 0x30 && (rb[1] == 0x78 || rb[1] == 0x58);
+        return vm.parseUint(hasPrefix ? raw : string.concat("0x", raw));
     }
 }
