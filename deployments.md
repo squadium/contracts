@@ -18,6 +18,14 @@ Deployed 2026-05-19 from commit on `main`. Deployer:
 **START_BLOCK for indexer: `38879885`** (block of the first deploy tx — set this in the
 indexer `.env.local` to skip scanning the rest of the chain).
 
+### Seeded agents (cold-start mitigation · CCRI spec §6)
+
+`script/Seed.s.sol` registered **10 demo agents** with diverse tiers
+(T1–T5) and seeded perf metrics so the dapp + oracle have real on-chain data
+at demo time. Cost reads verified via `cast`:
+`getAgentCost(42) = 35` (T1) and `getAgentCost(211) = 8` (T5). See
+`broadcast/Seed.s.sol/5003/run-latest.json` for the full tx log.
+
 ## Mantle Mainnet · chainId 5000
 
 _Not deployed yet — planned W4 if Sepolia run validates clean._
