@@ -57,9 +57,7 @@ contract AgentReputationOracle {
         require(rep.score <= 10_000 && rep.confidence <= 10_000, "out of range");
 
         bytes32 digest = keccak256(
-            abi.encodePacked(
-                agentId, rep.score, rep.confidence, rep.tier, rep.asOf, rep.horizon, nonce, address(this)
-            )
+            abi.encodePacked(agentId, rep.score, rep.confidence, rep.tier, rep.asOf, rep.horizon, nonce, address(this))
         );
         bytes32 ethSigned = keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", digest));
         require(_recover(ethSigned, sig) == signer, "bad signer");

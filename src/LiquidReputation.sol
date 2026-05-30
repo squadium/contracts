@@ -24,7 +24,7 @@ contract LiquidReputation {
     address public treasury;
 
     /// @dev max single-event slash, basis points (5000 = 50%)
-    uint16 public constant MAX_SLASH_BPS = 5_000;
+    uint16 public constant MAX_SLASH_BPS = 5000;
 
     struct Pool {
         uint256 totalStaked; // mETH currently in pool

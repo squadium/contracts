@@ -21,8 +21,7 @@ contract SeedDrafts is Script {
 
     function run() external {
         uint256 deployerPk = _readDeployerPk();
-        address squadiumAddr =
-            vm.envOr("SQUADIUM_ADDRESS", address(0x4299b716F33Be7F43D0Ebf0c1F4863D3fC4b37ec));
+        address squadiumAddr = vm.envOr("SQUADIUM_ADDRESS", address(0x4299b716F33Be7F43D0Ebf0c1F4863D3fC4b37ec));
         Squadium squadium = Squadium(squadiumAddr);
 
         console.log("Squadium:", squadiumAddr);

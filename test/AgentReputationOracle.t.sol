@@ -14,13 +14,13 @@ contract AgentReputationOracleTest is Test {
         oracle = new AgentReputationOracle(signer);
     }
 
-    function _rep(uint16 score, uint16 conf, uint8 tier) internal view returns (AgentReputationOracle.Reputation memory) {
+    function _rep(uint16 score, uint16 conf, uint8 tier)
+        internal
+        view
+        returns (AgentReputationOracle.Reputation memory)
+    {
         return AgentReputationOracle.Reputation({
-            score: score,
-            confidence: conf,
-            tier: tier,
-            asOf: uint64(block.timestamp),
-            horizon: 7 days
+            score: score, confidence: conf, tier: tier, asOf: uint64(block.timestamp), horizon: 7 days
         });
     }
 

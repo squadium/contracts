@@ -65,7 +65,7 @@ contract LiquidReputationTest is Test {
         lr.stake(AGENT_ID, 10 ether);
 
         vm.prank(oracle);
-        lr.slash(AGENT_ID, 2_000); // 20%
+        lr.slash(AGENT_ID, 2000); // 20%
 
         (uint256 totalStaked,) = lr.pools(AGENT_ID);
         assertEq(totalStaked, 8 ether);
@@ -77,7 +77,7 @@ contract LiquidReputationTest is Test {
         lr.stake(AGENT_ID, 10 ether);
         vm.prank(oracle);
         vm.expectRevert("bad slashBps");
-        lr.slash(AGENT_ID, 6_000); // > 50%
+        lr.slash(AGENT_ID, 6000); // > 50%
     }
 
     function test_slash_revertsForNonOracle() public {
@@ -85,7 +85,7 @@ contract LiquidReputationTest is Test {
         lr.stake(AGENT_ID, 10 ether);
         vm.prank(alice);
         vm.expectRevert("not oracle");
-        lr.slash(AGENT_ID, 1_000);
+        lr.slash(AGENT_ID, 1000);
     }
 
     function test_slash_thenUnstake_redeemsLessMETH() public {
@@ -97,7 +97,7 @@ contract LiquidReputationTest is Test {
 
         // 50% slash → pool now 10 mETH, shares still 20
         vm.prank(oracle);
-        lr.slash(AGENT_ID, 5_000);
+        lr.slash(AGENT_ID, 5000);
 
         // Alice burns her 10 shares → gets 5 mETH
         uint256 before = mETH.balanceOf(alice);
@@ -112,7 +112,7 @@ contract LiquidReputationTest is Test {
         assertEq(lr.previewUnstake(AGENT_ID, alice), 10 ether);
 
         vm.prank(oracle);
-        lr.slash(AGENT_ID, 5_000);
+        lr.slash(AGENT_ID, 5000);
         assertEq(lr.previewUnstake(AGENT_ID, alice), 5 ether);
     }
 

@@ -25,7 +25,7 @@ contract SquadiumTest is Test {
         registry.updateAgent(1, AgentRegistry.Tier.Legendary, 25_000, 0, false); // 35
         registry.updateAgent(2, AgentRegistry.Tier.Elite, 18_000, 0, false); // 25
         registry.updateAgent(3, AgentRegistry.Tier.Pro, 12_000, 0, false); // 18
-        registry.updateAgent(4, AgentRegistry.Tier.Rising, 8_000, 0, false); // 12
+        registry.updateAgent(4, AgentRegistry.Tier.Rising, 8000, 0, false); // 12
         registry.updateAgent(5, AgentRegistry.Tier.Rookie, 0, 0, false); // 8
         registry.updateAgent(6, AgentRegistry.Tier.Rookie, 0, 0, false); // 8
         vm.stopPrank();

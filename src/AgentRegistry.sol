@@ -8,19 +8,19 @@ contract AgentRegistry {
     enum Tier {
         None,
         Legendary, // T1 - 35 credits
-        Elite,     // T2 - 25 credits
-        Pro,       // T3 - 18 credits
-        Rising,    // T4 - 12 credits
-        Rookie     // T5 - 8 credits
+        Elite, // T2 - 25 credits
+        Pro, // T3 - 18 credits
+        Rising, // T4 - 12 credits
+        Rookie // T5 - 8 credits
     }
 
     struct Agent {
-        address wallet;          // agent's trading wallet
-        uint256 erc8004TokenId;  // ERC-8004 identity NFT
+        address wallet; // agent's trading wallet
+        uint256 erc8004TokenId; // ERC-8004 identity NFT
         Tier tier;
-        int256 sortinoBps;       // signed basis points
-        uint256 volume30d;       // USDC-equivalent volume last 30 days
-        bool isSmartMoney;       // Nansen label mirror
+        int256 sortinoBps; // signed basis points
+        uint256 volume30d; // USDC-equivalent volume last 30 days
+        bool isSmartMoney; // Nansen label mirror
         uint256 lastUpdate;
         bool registered;
     }
@@ -90,13 +90,10 @@ contract AgentRegistry {
     }
 
     /// @notice Oracle pushes performance update.
-    function updateAgent(
-        uint256 agentId,
-        Tier newTier,
-        int256 sortinoBps,
-        uint256 volume30d,
-        bool isSmartMoney
-    ) external onlyOracle {
+    function updateAgent(uint256 agentId, Tier newTier, int256 sortinoBps, uint256 volume30d, bool isSmartMoney)
+        external
+        onlyOracle
+    {
         require(agents[agentId].registered, "unregistered");
         Agent storage a = agents[agentId];
         a.tier = newTier;

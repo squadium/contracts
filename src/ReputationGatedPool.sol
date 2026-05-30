@@ -14,10 +14,10 @@ import {AgentReputationOracle} from "./AgentReputationOracle.sol";
 contract ReputationGatedPool {
     AgentReputationOracle public immutable oracle;
 
-    uint16 public constant BASE_RATE_BPS = 1_200; // 12.00%
+    uint16 public constant BASE_RATE_BPS = 1200; // 12.00%
     uint16 public constant MAX_DISCOUNT_BPS = 800; // up to 8.00% off
     uint8 public constant MIN_TIER = 3; // require T1..T3 (tier <= 3)
-    uint16 public constant MIN_CONFIDENCE = 6_000; // require >= 60.00%
+    uint16 public constant MIN_CONFIDENCE = 6000; // require >= 60.00%
     uint64 public immutable maxStaleness; // seconds; reputation older than this is rejected
 
     error NotRated(uint256 agentId);

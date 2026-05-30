@@ -52,16 +52,106 @@ contract Seed is Script {
     }
 
     function _seeds() internal pure returns (Seed_[10] memory s) {
-        s[0] = Seed_(42, 0x42aa000000000000000000000000000000001ce0, 1, AgentRegistry.Tier.Legendary, 28_400, 1_240_000e6, true, "MomentumMaxi");
-        s[1] = Seed_(17, 0x17bB000000000000000000000000000000004F12, 2, AgentRegistry.Tier.Elite, 23_100, 880_000e6, false, "AlphaScout");
-        s[2] = Seed_(88, 0x88cc000000000000000000000000000000007D33, 3, AgentRegistry.Tier.Elite, 20_500, 540_000e6, true, "VolatilityHunter");
-        s[3] = Seed_(103, 0x103D000000000000000000000000000000009aAA, 4, AgentRegistry.Tier.Pro, 16_200, 310_000e6, false, "MeanReverter");
-        s[4] = Seed_(145, 0x145E00000000000000000000000000000000B1c0, 5, AgentRegistry.Tier.Rising, 11_800, 180_000e6, false, "ArbiBot");
-        s[5] = Seed_(211, 0x211f000000000000000000000000000000003789, 6, AgentRegistry.Tier.Rookie, 4_100, 28_000e6, false, "RookieClaw");
-        s[6] = Seed_(64, 0x6440000000000000000000000000000000001234, 7, AgentRegistry.Tier.Pro, 17_400, 410_000e6, true, "RegimeRider");
-        s[7] = Seed_(31, 0x3170000000000000000000000000000000005678, 8, AgentRegistry.Tier.Elite, 21_300, 720_000e6, false, "ClawSniper");
-        s[8] = Seed_(7, 0x0700000000000000000000000000000000009aBc, 9, AgentRegistry.Tier.Rising, 9_400, 95_000e6, false, "GammaGoblin");
-        s[9] = Seed_(255, 0xFf00000000000000000000000000000000000def, 10, AgentRegistry.Tier.Pro, 14_800, 220_000e6, false, "DeltaNeutralius");
+        s[0] = Seed_(
+            42,
+            0x42aa000000000000000000000000000000001ce0,
+            1,
+            AgentRegistry.Tier.Legendary,
+            28_400,
+            1_240_000e6,
+            true,
+            "MomentumMaxi"
+        );
+        s[1] = Seed_(
+            17,
+            0x17bB000000000000000000000000000000004F12,
+            2,
+            AgentRegistry.Tier.Elite,
+            23_100,
+            880_000e6,
+            false,
+            "AlphaScout"
+        );
+        s[2] = Seed_(
+            88,
+            0x88cc000000000000000000000000000000007D33,
+            3,
+            AgentRegistry.Tier.Elite,
+            20_500,
+            540_000e6,
+            true,
+            "VolatilityHunter"
+        );
+        s[3] = Seed_(
+            103,
+            0x103D000000000000000000000000000000009aAA,
+            4,
+            AgentRegistry.Tier.Pro,
+            16_200,
+            310_000e6,
+            false,
+            "MeanReverter"
+        );
+        s[4] = Seed_(
+            145,
+            0x145E00000000000000000000000000000000B1c0,
+            5,
+            AgentRegistry.Tier.Rising,
+            11_800,
+            180_000e6,
+            false,
+            "ArbiBot"
+        );
+        s[5] = Seed_(
+            211,
+            0x211f000000000000000000000000000000003789,
+            6,
+            AgentRegistry.Tier.Rookie,
+            4100,
+            28_000e6,
+            false,
+            "RookieClaw"
+        );
+        s[6] = Seed_(
+            64,
+            0x6440000000000000000000000000000000001234,
+            7,
+            AgentRegistry.Tier.Pro,
+            17_400,
+            410_000e6,
+            true,
+            "RegimeRider"
+        );
+        s[7] = Seed_(
+            31,
+            0x3170000000000000000000000000000000005678,
+            8,
+            AgentRegistry.Tier.Elite,
+            21_300,
+            720_000e6,
+            false,
+            "ClawSniper"
+        );
+        s[8] = Seed_(
+            7,
+            0x0700000000000000000000000000000000009aBc,
+            9,
+            AgentRegistry.Tier.Rising,
+            9400,
+            95_000e6,
+            false,
+            "GammaGoblin"
+        );
+        s[9] = Seed_(
+            255,
+            0xFf00000000000000000000000000000000000def,
+            10,
+            AgentRegistry.Tier.Pro,
+            14_800,
+            220_000e6,
+            false,
+            "DeltaNeutralius"
+        );
     }
 
     /// @dev Accept DEPLOYER_PRIVATE_KEY with or without `0x` prefix.

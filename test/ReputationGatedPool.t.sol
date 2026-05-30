@@ -22,13 +22,8 @@ contract ReputationGatedPoolTest is Test {
     }
 
     function _push(uint256 agentId, uint16 score, uint16 conf, uint8 tier, uint64 asOf, uint256 nonce) internal {
-        AgentReputationOracle.Reputation memory r = AgentReputationOracle.Reputation({
-            score: score,
-            confidence: conf,
-            tier: tier,
-            asOf: asOf,
-            horizon: 7 days
-        });
+        AgentReputationOracle.Reputation memory r =
+            AgentReputationOracle.Reputation({score: score, confidence: conf, tier: tier, asOf: asOf, horizon: 7 days});
         bytes32 digest = keccak256(
             abi.encodePacked(agentId, r.score, r.confidence, r.tier, r.asOf, r.horizon, nonce, address(oracle))
         );
@@ -39,9 +34,9 @@ contract ReputationGatedPoolTest is Test {
 
     function test_rate_scalesWithScore() public {
         _push(1, 0, 8000, 1, uint64(block.timestamp), 1); // score 0 → no discount
-        assertEq(pool.borrowRateBps(1), 1_200);
+        assertEq(pool.borrowRateBps(1), 1200);
 
-        _push(2, 5_000, 8000, 1, uint64(block.timestamp), 1); // 50% → 400 off → 800
+        _push(2, 5000, 8000, 1, uint64(block.timestamp), 1); // 50% → 400 off → 800
         assertEq(pool.borrowRateBps(2), 800);
 
         _push(3, 10_000, 8000, 1, uint64(block.timestamp), 1); // max → 800 off → 400
@@ -88,7 +83,7 @@ contract ReputationGatedPoolTest is Test {
     function test_eligible_boundaryConfidenceExactly6000() public {
         _push(1, 8000, 6000, 3, uint64(block.timestamp), 1); // conf == MIN, tier == MIN
         assertTrue(pool.eligible(1));
-        assertEq(pool.borrowRateBps(1), 1_200 - uint16((uint256(8000) * 800) / 10_000));
+        assertEq(pool.borrowRateBps(1), 1200 - uint16((uint256(8000) * 800) / 10_000));
     }
 
     function test_constructor_revertsOnZeroOracle() public {
