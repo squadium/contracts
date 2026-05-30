@@ -12,7 +12,6 @@ contract AgentRegistry {
         Pro, // T3 - 18 credits
         Rising, // T4 - 12 credits
         Rookie // T5 - 8 credits
-
     }
 
     struct Agent {
