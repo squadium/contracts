@@ -20,7 +20,11 @@ contract AgentReputationOracleTest is Test {
         returns (AgentReputationOracle.Reputation memory)
     {
         return AgentReputationOracle.Reputation({
-            score: score, confidence: conf, tier: tier, asOf: uint64(block.timestamp), horizon: 7 days
+            score: score,
+            confidence: conf,
+            tier: tier,
+            asOf: uint64(block.timestamp),
+            horizon: 7 days
         });
     }
 
